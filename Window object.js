@@ -58,12 +58,16 @@ const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
+
+
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
-  
+
+
+
   if(nameInput.value === '' || emailInput.value === '') {
     // alert('Please enter all fields');
     msg.classList.add('error');
@@ -84,24 +88,34 @@ function onSubmit(e) {
     // Append to ul
     userList.appendChild(li);
 
-    console.log(nameInput.value);
-    console.log(emailInput.value);
+    //console.log(nameInput.value);
+    //console.log(emailInput.value);
 
     //STORE ON LOCAL STORAGE
-    localStorage.setItem('name', nameInput.value)
+    /*localStorage.setItem('name', nameInput.value)
     localStorage.setItem('email', emailInput.value)
 
-    console.log(localStorage.getItem('name'));
+    console.log(localStorage.getItem('name'));*/
 
+   
+   
+    }
+    
+ //STORING INPUT AS OBJECT ON LOCAL STORAGE
+ var name=nameInput.value;
+ var email=emailInput.value;
+  const obj={
+  name,
+  email,
+}
+localStorage.setItem('userdetails',JSON.stringify(obj));
 
+// Clear fields
+nameInput.value = '';
+emailInput.value = '';
+    
+  
+      
+      
 
-    // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
   }
-  
-      
-      
-
-  
-} 
